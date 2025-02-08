@@ -22,7 +22,19 @@
 # Note: python does not have a ++ operator, but += works.
 def match_ends(words):
   # +++your code here+++
-  return
+  # ['aba', 'xyz', 'aa', 'x', 'bbb']), 3
+  print(f"words is: ", words)
+  i = 0
+  for var in words:
+    #print(var)
+    if len(var) >= 2:
+      #print(len(var))
+      if var[0:1] == var[-1]:
+        i += 1
+  #print(f"i is: ", i)
+  #words.append(i)
+  #print(f"words after append: ", words)
+  return i
 
 
 # B. front_x
@@ -30,11 +42,25 @@ def match_ends(words):
 # in sorted order, except group all the strings that begin with 'x' first.
 # e.g. ['mix', 'xyz', 'apple', 'xanadu', 'aardvark'] yields
 # ['xanadu', 'xyz', 'aardvark', 'apple', 'mix']
-# Hint: this can be done by making 2 lists and sorting each of them
+# Hint: this can be done by making 2 li['bbb', 'ccc', 'axx', 'xzz', 'xaa']sts and sorting each of them
 # before combining them.
 def front_x(words):
   # +++your code here+++
-  return
+  #['bbb', 'ccc', 'axx', 'xzz', 'xaa']
+  words_x = []
+  words_no_x = []
+  #print(words)
+  for var in words:
+    if var[0:1] == "x":
+      letter_x = var[0:1]
+      words_x.append(var)
+      sorted_words_x = sorted(words_x)
+      #print(f"sorted_words_x =: ", sorted_words_x)
+    else:
+      words_no_x.append(var)
+      sorted_words_no_x = sorted(words_no_x)
+      #print(f"sorted_words_no_x =: ", sorted_words_no_x)
+  return sorted_words_x + sorted_words_no_x 
 
 
 
