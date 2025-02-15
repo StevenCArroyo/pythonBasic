@@ -44,7 +44,57 @@ import sys
 # You could write a helper utility function that reads a file
 # and builds and returns a word/count dict for it.
 # Then print_words() and print_top() can just call the utility function.
-
+def print_words(filename): 
+  words = {}
+  count = 0
+  with open(filename, 'r') as f:
+    for line in f:
+      line = line.lower()
+      for word in line.split():
+        if word in words:
+          #print(f"found word: ", word)
+          count += 1
+          words[word] = count
+        else:
+          #print(f"word not found: ", word)
+          words[word] = 1
+    for key in sorted(words.keys()):
+      print(key, words[key])
+        
+def print_top(filename): 
+  words = {}
+  count = 0
+  with open(filename, 'r') as f:
+    for line in f:
+      line = line.lower()
+      for word in line.split():
+        if word in words:
+          #print(f"found word: ", word)
+          count += 1
+          words[word] = count
+        else:
+          #print(f"word not found: ", word)
+          words[word] = 1
+      #for k, v in words.items(): print(k, ">", v)
+    #for key in sorted(words.keys()):
+    #  print(key, words[key])
+    #print(words.items())
+    sorted_by_values_desc = dict(sorted(words.items(), key=lambda item: item[1], reverse=True))
+    f = open('sorted.txt', 'w')
+    for key, value in sorted_by_values_desc.items():
+      f.write(f"Key: {key}, Value: {value}\n")
+    f.close()
+    i = 5
+    with open('sorted.txt', 'r') as f:
+      lineList = f.readlines()
+      for textline in (lineList[:20]):
+        print(textline, end = '\n')
+    f.close()
+      
+    #print(sorted_by_values_desc)
+    #for key in sorted(sorted_by_values_desc.keys()):
+    #  print(key, sorted_by_values_desc[key])
+    
 ###
 
 # This basic command line argument parsing code is provided and
